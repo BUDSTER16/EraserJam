@@ -44,19 +44,21 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Terrain") { return; }
-
-        short weapType = collision.GetComponent<WeaponCheck>().getType();
-        GameObject weapon;
-        weapon = collision.gameObject;
-        switch (weapType)
+        if(collision.tag == "Weapon")
         {
-            case 0:
-                health -= (weapon.GetComponent<AOEWeapon>().damage/5) * Time.deltaTime;
-                break;
-            default:
-                break;
+            short weapType = collision.GetComponent<WeaponCheck>().getType();
+            GameObject weapon;
+            weapon = collision.gameObject;
+            switch (weapType)
+            {
+                case 0:
+                    health -= (weapon.GetComponent<AOEWeapon>().damage/5) * Time.deltaTime;
+                    break;
+                default:
+                    break;
+            }
         }
+        
     }
 
     private void Die()

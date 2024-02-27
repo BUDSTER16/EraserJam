@@ -17,7 +17,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         if(falling)
         {
-            animator.SetBool("Falling", true);
+            animator.SetTrigger("Falling");
         }
         else if(Input.GetKeyDown(KeyCode.D))
         {
@@ -43,9 +43,9 @@ public class PlayerAnimator : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Terrain")
+        if(collision.gameObject.tag == "Pit")
         {
             falling = true;
         }
