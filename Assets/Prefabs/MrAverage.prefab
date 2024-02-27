@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5114703480259255696}
   - component: {fileID: 3717081370402790460}
   - component: {fileID: 7092129975168593250}
+  - component: {fileID: -6739761138190392524}
   m_Layer: 0
   m_Name: MrAverage
   m_TagString: Player
@@ -172,3 +173,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+--- !u!114 &-6739761138190392524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094410085130404002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952d1e19a229aec4dbb2e928071bd2f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atkDelay: 1
+  dmgMultiplier: 1
+  curseDamage: 0.2
+  healMultiplier: 1
