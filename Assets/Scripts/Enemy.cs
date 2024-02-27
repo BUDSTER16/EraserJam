@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float damage;
     public bool isRanged;
     public float speed;
+    public short IDNum;
 
     private GameObject player;
     private GameObject gameManager;
@@ -29,6 +30,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         goal = player.transform.position;
+
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     private void FixedUpdate()
@@ -44,10 +50,16 @@ public class Enemy : MonoBehaviour
         switch (weapType)
         {
             case 0:
-                health -= weapon.GetComponent<AOEWeapon>().damage * Time.deltaTime;
+                health -= (weapon.GetComponent<AOEWeapon>().damage/2) * Time.deltaTime;
                 break;
             default:
                 break;
         }
+    }
+
+    private void Die()
+    {
+        gameManager.GetComponent<GameManager>().EnemyKilled(IDNum);
+        Destroy(this.gameObject);
     }
 }

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 7215011732157598280, guid: d1c57fc4e414694449c2280b2fa4530d, type: 3}
   mrAverage: {fileID: 1094410085130404002, guid: 569f259e8736b5a4fa3beddc187d82d9, type: 3}
+  lilDemon: {fileID: 4045267242486857348, guid: c6f51bb368665ef40b739b0ef1818f49, type: 3}
 --- !u!4 &686261167
 Transform:
   m_ObjectHideFlags: 0
