@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4918117639913143691}
   - component: {fileID: 610302597246759652}
   - component: {fileID: -7147166892845416375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DmgCircle
   m_TagString: Weapon
   m_Icon: {fileID: 0}

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3717081370402790460}
   - component: {fileID: 7092129975168593250}
   - component: {fileID: -6739761138190392524}
+  - component: {fileID: 3648165606646923358}
+  - component: {fileID: -1471528027384608289}
   m_Layer: 0
   m_Name: MrAverage
   m_TagString: Player
@@ -189,4 +191,38 @@ MonoBehaviour:
   dmgMultiplier: 1
   curseDamage: 0.2
   healMultiplier: 1
+  xpToLevel: 50
   eraseCircle: {fileID: 9043783973476608158, guid: 19097a9a3d776d94db04cd8e2bfdee1c, type: 3}
+--- !u!95 &3648165606646923358
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094410085130404002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 576c3ef6e26f3e94ba45721f409ba3b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1471528027384608289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094410085130404002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b732c45baf1a8449e6baef1485fc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

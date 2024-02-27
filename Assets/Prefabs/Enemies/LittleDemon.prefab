@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6283338731745829738}
   - component: {fileID: -4025733689578577852}
   - component: {fileID: 5215034053142407998}
+  - component: {fileID: 7872380578685261571}
   m_Layer: 0
   m_Name: LittleDemon
   m_TagString: Enemy
@@ -103,6 +104,7 @@ MonoBehaviour:
   damage: 1
   isRanged: 0
   speed: 2
+  IDNum: 0
 --- !u!61 &-4025733689578577852
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,3 +177,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &7872380578685261571
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4045267242486857348}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4832e0a5b60bffb45bdc0f2a1a1cdc23, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

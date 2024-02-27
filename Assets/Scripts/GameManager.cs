@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 this.lilDemonNum -= 1;
+                player.GetComponent<PlayerWeapons>().GainXP(1);
                 break;
             default:
                 break;

@@ -10,9 +10,12 @@ public class PlayerWeapons : MonoBehaviour
     public float dmgMultiplier = 1.0f;
     public float curseDamage = 0.2f;
     public float healMultiplier = 1.0f;
+    public int xpToLevel = 50;
 
     [Header("Weapons")]
     public GameObject eraseCircle;
+
+    private int experience;
 
     private string[] equipped = { "def", "def", "def", "def", "def", "def" };
 
@@ -49,5 +52,10 @@ public class PlayerWeapons : MonoBehaviour
     {
         GameObject newWeapon = Instantiate(equWeapon, this.transform);
         newWeapon.transform.transform.localPosition = new Vector3(0, -0.6f, 0);
+    }
+
+    public void GainXP(int xp)
+    {
+        experience += xp;
     }
 }
