@@ -48,6 +48,6 @@ public class PlayerWeapons : MonoBehaviour
     void AttachWeapon(GameObject equWeapon)
     {
         GameObject newWeapon = Instantiate(equWeapon, this.transform);
-        newWeapon.transform.transform.localPosition = new Vector3(0, -25, 0);
+        newWeapon.transform.transform.localPosition = new Vector3(0, -0.6f, 0);
     }
 }

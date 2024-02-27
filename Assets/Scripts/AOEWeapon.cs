@@ -9,11 +9,12 @@ public class AOEWeapon : MonoBehaviour
     public float damage;
     public float regen;
     public bool isCursed;
+    private Vector3 size;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        size = this.transform.localScale;
     }
 
     // Update is called once per frame
