@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerWeapons : MonoBehaviour
 {
     [Header("Stats")]
+    public float maxHP = 30f;
     public float atkDelay = 1.0f;
     public float dmgMultiplier = 1.0f;
     public float curseDamage = 0.2f;
@@ -16,12 +17,14 @@ public class PlayerWeapons : MonoBehaviour
     public GameObject eraseCircle;
 
     private int experience;
+    private float HP;
 
     private string[] equipped = { "def", "def", "def", "def", "def", "def" };
 
     void Start()
     {
         Equip(eraseCircle);
+        HP = maxHP;
     }
 
 
@@ -57,5 +60,14 @@ public class PlayerWeapons : MonoBehaviour
     public void GainXP(int xp)
     {
         experience += xp;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            GameObject attacker = collision.gameObject;
+            HP -= attacker.GetComponent<Enemy>().damage;
+        }
     }
 }

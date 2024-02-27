@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     private GameObject player;
     private GameObject gameManager;
+    private Animator animator;
     Vector3 goal;
 
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager");
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,7 +60,21 @@ public class Enemy : MonoBehaviour
                     break;
             }
         }
+        if(collision.tag == "Player")
+        {
+            animator.ResetTrigger("Walk");
+            animator.SetTrigger("Bite");
+        }
         
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            animator.ResetTrigger("Bite");
+            animator.SetTrigger("Walk");
+        }
     }
 
     private void Die()
