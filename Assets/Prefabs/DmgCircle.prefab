@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1094410085130404002
+--- !u!1 &9043783973476608158
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 554168575748744565}
-  - component: {fileID: 2382212886901624300}
-  - component: {fileID: 5114703480259255696}
-  - component: {fileID: 3717081370402790460}
-  - component: {fileID: 7092129975168593250}
-  - component: {fileID: -6739761138190392524}
+  - component: {fileID: 8702870411882033282}
+  - component: {fileID: 5819504451792629673}
+  - component: {fileID: 4918117639913143691}
+  - component: {fileID: 610302597246759652}
   m_Layer: 0
-  m_Name: MrAverage
-  m_TagString: Player
+  m_Name: DmgCircle
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &554168575748744565
+--- !u!4 &8702870411882033282
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094410085130404002}
+  m_GameObject: {fileID: 9043783973476608158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.24646407, y: 0.9659015, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2382212886901624300
+--- !u!212 &5819504451792629673
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094410085130404002}
+  m_GameObject: {fileID: 9043783973476608158}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -77,24 +75,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3b641442e6c3cdd41aff5ad7e3389eef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a39cc9756d91094b990600b60386574, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.96, y: 1.6}
+  m_Size: {x: 1.2, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5114703480259255696
+--- !u!61 &4918117639913143691
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094410085130404002}
+  m_GameObject: {fileID: 9043783973476608158}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -117,76 +115,35 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019748926, y: -0.18484804}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 1.6}
-    newSize: {x: 0.96, y: 1.6}
+    oldSize: {x: 1.2, y: 0.8}
+    newSize: {x: 1.2, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5571228, y: 1.2303038}
+  m_Size: {x: 1.2, y: 0.8}
   m_EdgeRadius: 0
---- !u!50 &3717081370402790460
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094410085130404002}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &7092129975168593250
+--- !u!114 &610302597246759652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094410085130404002}
+  m_GameObject: {fileID: 9043783973476608158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c74b4cedc26d914db96539f6f656a1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7421ef8017b3de149b0f21283e06e333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
---- !u!114 &-6739761138190392524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094410085130404002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 952d1e19a229aec4dbb2e928071bd2f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  atkDelay: 1
-  dmgMultiplier: 1
-  curseDamage: 0.2
-  healMultiplier: 1
-  eraseCircle: {fileID: 9043783973476608158, guid: 19097a9a3d776d94db04cd8e2bfdee1c, type: 3}
+  weaponName: Eraser Circle
+  damage: 10
+  regen: 0
+  isCursed: 0
