@@ -43,6 +43,8 @@ public class PlayerAnimator : MonoBehaviour
             animator.ResetTrigger("Walking");
             animator.SetTrigger("Idle");
         }
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,18 +52,11 @@ public class PlayerAnimator : MonoBehaviour
         if(collision.gameObject.tag == "Pit")
         {
             falling = true;
-            StartCoroutine(Fall());
+            gameObject.GetComponent<PlayerMovement>().DisableMovement();
+
         }
     }
 
-    IEnumerator Fall()
-    {
-        yield return new WaitForSeconds(3);
-        do
-        {
-            gameObject.transform.localScale -= new Vector3(0.1f, 0.1f)*Time.deltaTime;
-        } while (true);
-    }
 
 
 }

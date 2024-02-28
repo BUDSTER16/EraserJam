@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float vertical, horizontal;
 
+    private bool allowedToMove = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,6 +26,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+        if (allowedToMove) {
+            rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+        } 
+    }
+
+    public void DisableMovement()
+    {
+        allowedToMove= false;
     }
 }

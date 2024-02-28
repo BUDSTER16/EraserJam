@@ -65,10 +65,20 @@ public class PlayerWeapons : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         HP -= dmg;
+
+        if (HP <= 0)
+        {
+            Die();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(collision.gameObject.tag);
+    }
+
+    public void Die()
+    {
+        Debug.Log("YOU DIED");
     }
 }
