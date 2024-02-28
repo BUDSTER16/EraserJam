@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, goal, speed*Time.deltaTime);
+        this.transform.position = Vector3.MoveTowards(this.transform.position, goal, speed * Time.deltaTime);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
                     health -= (weapon.GetComponent<OrbitWeapon>().damage / 2) * Time.deltaTime;
                     break;
                 case 2:
-                    health -= (weapon.GetComponent<ProjWeapon>().damage) * Time.deltaTime;
+                    health -= (weapon.GetComponent<ProjWeapon>().damage);
                     Destroy(weapon);
                     break;
                 default:

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     Vector3 spawnPos= Vector3.zero;
 
-    private int lilDemonReq = 1;
+    private int lilDemonReq = 5;
     private int totalEnemyReq = 0;
 
     private int lilDemonNum = 0;
