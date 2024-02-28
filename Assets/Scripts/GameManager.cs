@@ -43,12 +43,9 @@ public class GameManager : MonoBehaviour
 
     private int lilDemonKills = 0;
 
-
-    
-
     void Start()
     {
-        SelectCharacter(0);
+        SelectCharacter(Smuggle());
         player = Instantiate(selectedCharacter);
         Instantiate(cam, player.transform);
 
@@ -208,5 +205,13 @@ public class GameManager : MonoBehaviour
     {
         player.GetComponent<PlayerWeapons>().RecieveSelection(weap);
         HideButtons();
+    }
+
+    short Smuggle()
+    {
+        GameObject Capsule = GameObject.Find("DataCapsule");
+        short pick = (short)Capsule.GetComponent<CharSelectData>().getCharacter();
+        Destroy(Capsule);
+        return pick;
     }
 }

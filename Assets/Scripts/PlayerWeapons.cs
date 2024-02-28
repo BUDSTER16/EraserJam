@@ -26,7 +26,7 @@ public class PlayerWeapons : MonoBehaviour
     private int experience;
     private float HP;
 
-    private string[] equipped = { "def", "def", "def", "def", "def", "def" };
+    private string[] equipped = { "def", "def", "def", "def" };
 
     void Start()
     {

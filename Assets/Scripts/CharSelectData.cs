@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharSelectData : MonoBehaviour
 {
+    // 0 = Avj,1 = Proj, 2 = Tank, 3 = Demon
     int charSelected;
 
     private void Awake()
