@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Enemies")]
     public GameObject lilDemon;
+
+    [Header("Buttons")]
+    [SerializeField] public GameObject firstButton;
+    [SerializeField] public GameObject secondButton;
+    [SerializeField] public GameObject thirdButton;
+
 
     private GameObject selectedCharacter;
     private GameObject player;
@@ -25,14 +32,20 @@ public class GameManager : MonoBehaviour
     private int totalEnemyNum = 0;
 
 
+    private int lilDemonKills = 0;
 
-    public int lilDemonKills = 0;
+
+    
 
     void Start()
     {
         SelectCharacter(0);
         player = Instantiate(selectedCharacter);
         Instantiate(cam, player.transform);
+
+        firstButton.SetActive(false);
+        secondButton.SetActive(false);
+        thirdButton.SetActive(false);
     }
 
     void Update()
@@ -42,6 +55,11 @@ public class GameManager : MonoBehaviour
         if (totalEnemyNum < totalEnemyReq)
         {
             SpawnEnemy();
+        }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ShowButtons();
         }
     }
 
@@ -110,11 +128,22 @@ public class GameManager : MonoBehaviour
         switch (enemyType)
         {
             case 0:
-                this.lilDemonNum -= 1;
+                lilDemonNum -= 1;
+                lilDemonKills += 1;
                 player.GetComponent<PlayerWeapons>().GainXP(1);
                 break;
             default:
                 break;
         }
+    }
+
+    public void ShowButtons()
+    {
+        // Weapon List:
+        // 0: Circle, 1: Bow, 2: Whiteout, 3: Pencils
+        
+        firstButton.SetActive(true);
+        secondButton.SetActive(true);
+        thirdButton.SetActive(true);
     }
 }

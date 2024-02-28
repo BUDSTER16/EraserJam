@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerWeapons : MonoBehaviour
 {
@@ -15,9 +16,15 @@ public class PlayerWeapons : MonoBehaviour
 
     [Header("Weapons")]
     public GameObject eraseCircle;
+    public GameObject bow;
+    public GameObject whiteout;
+    public GameObject pencilStar;
+
+    [Header("UI Utilities")]
+    private GameObject deathScreen;
 
     private int experience;
-    public float HP;
+    private float HP;
 
     private string[] equipped = { "def", "def", "def", "def", "def", "def" };
 
@@ -25,6 +32,8 @@ public class PlayerWeapons : MonoBehaviour
     {
         Equip(eraseCircle);
         HP = maxHP;
+        deathScreen = GameObject.Find("GameOverScreen");
+        deathScreen.SetActive(false);
     }
 
 
@@ -72,13 +81,17 @@ public class PlayerWeapons : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log(collision.gameObject.tag);
-    }
-
     public void Die()
     {
         Debug.Log("YOU DIED");
+        deathScreen.SetActive(true);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Pit")
+        {
+            Die();
+        }
     }
 }
