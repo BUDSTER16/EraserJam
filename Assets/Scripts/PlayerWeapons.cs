@@ -17,7 +17,7 @@ public class PlayerWeapons : MonoBehaviour
     public GameObject eraseCircle;
 
     private int experience;
-    private float HP;
+    public float HP;
 
     private string[] equipped = { "def", "def", "def", "def", "def", "def" };
 
@@ -62,12 +62,13 @@ public class PlayerWeapons : MonoBehaviour
         experience += xp;
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    public void TakeDamage(float dmg)
     {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            GameObject attacker = collision.gameObject;
-            HP -= attacker.GetComponent<Enemy>().damage;
-        }
+        HP -= dmg;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
     }
 }

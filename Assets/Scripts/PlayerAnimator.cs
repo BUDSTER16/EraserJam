@@ -17,6 +17,8 @@ public class PlayerAnimator : MonoBehaviour
     {
         if(falling)
         {
+            animator.ResetTrigger("Idle");
+            animator.ResetTrigger("Walking");
             animator.SetTrigger("Falling");
         }
         else if(Input.GetKeyDown(KeyCode.D))
@@ -48,7 +50,17 @@ public class PlayerAnimator : MonoBehaviour
         if(collision.gameObject.tag == "Pit")
         {
             falling = true;
+            StartCoroutine(Fall());
         }
+    }
+
+    IEnumerator Fall()
+    {
+        yield return new WaitForSeconds(3);
+        do
+        {
+            gameObject.transform.localScale -= new Vector3(0.1f, 0.1f)*Time.deltaTime;
+        } while (true);
     }
 
 

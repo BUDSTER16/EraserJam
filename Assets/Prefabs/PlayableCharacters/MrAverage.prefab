@@ -119,7 +119,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.019748926, y: -0.5316404}
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c74b4cedc26d914db96539f6f656a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 7
 --- !u!114 &-6739761138190392524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,12 +187,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952d1e19a229aec4dbb2e928071bd2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 30
   atkDelay: 1
   dmgMultiplier: 1
   curseDamage: 0.2
   healMultiplier: 1
   xpToLevel: 50
   eraseCircle: {fileID: 9043783973476608158, guid: 19097a9a3d776d94db04cd8e2bfdee1c, type: 3}
+  HP: 0
 --- !u!95 &3648165606646923358
 Animator:
   serializedVersion: 5

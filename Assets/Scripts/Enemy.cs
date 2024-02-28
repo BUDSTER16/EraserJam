@@ -64,13 +64,14 @@ public class Enemy : MonoBehaviour
         {
             animator.ResetTrigger("Walk");
             animator.SetTrigger("Bite");
+            player.GetComponent<PlayerWeapons>().TakeDamage(damage*Time.deltaTime);
         }
         
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.tag == "Player")
+        if (collision.tag == "Player")
         {
             animator.ResetTrigger("Bite");
             animator.SetTrigger("Walk");
