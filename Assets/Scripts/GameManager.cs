@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Enemies")]
     public GameObject lilDemon;
+    public GameObject biggerDemon;
 
     [Header("Buttons")]
     [SerializeField] public Image[] buttons = new Image[3];
@@ -35,9 +36,11 @@ public class GameManager : MonoBehaviour
     Vector3 spawnPos= Vector3.zero;
 
     private int lilDemonReq = 5;
+    private int biggerDemonReq = 1;
     private int totalEnemyReq = 0;
 
     private int lilDemonNum = 0;
+    private int biggerDemonNum = 0;
     private int totalEnemyNum = 0;
 
 
@@ -56,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        totalEnemyReq = lilDemonReq;
+        totalEnemyReq = lilDemonReq + biggerDemonReq;
 
         if (totalEnemyNum < totalEnemyReq)
         {
@@ -133,6 +136,10 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(lilDemon, spawnPos, Quaternion.identity);
             lilDemonNum += 1;
+        }
+        else if (biggerDemonNum < biggerDemonReq)
+        {
+            Instantiate(biggerDemon, spawnPos, Quaternion.identity);
         }
     }
 

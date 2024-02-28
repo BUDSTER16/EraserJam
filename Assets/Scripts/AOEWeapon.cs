@@ -27,9 +27,29 @@ public class AOEWeapon : MonoBehaviour
         this.transform.localPosition = new Vector3(0, -0.6f, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    
+
+    public void Upgrade()
     {
-        
+        short stat = (short)Random.Range(0, 2);
+
+        switch (stat)
+        {
+            case 0:
+                damage += 0.5f;
+                break;
+            case 1:
+                size.x += 0.5f;
+                size.y += 0.5f;
+                AdjustTransform();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void AdjustTransform()
+    {
+        transform.localScale = size;
     }
 }

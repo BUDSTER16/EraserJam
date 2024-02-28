@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 
@@ -83,5 +84,26 @@ public class ProjWeapon : MonoBehaviour
     public bool IsFired()
     {
         return fired;
+    }
+
+    public void Upgrade()
+    {
+        short stat = (short)Random.Range(0, 2);
+
+        switch (stat)
+        {
+            case 0:
+                damage += 0.5f;
+                break;
+            case 1:
+                FireRate -= 0.1f;
+                if (FireRate <1)
+                {
+                    FireRate = 1;
+                }
+                break;
+            default:
+                break;
+        }
     }
 }
