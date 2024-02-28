@@ -30,12 +30,10 @@ public class PlayerWeapons : MonoBehaviour
 
     void Start()
     {
-        Equip(eraseCircle);
         HP = maxHP;
         deathScreen = GameObject.Find("GameOverScreen");
         deathScreen.SetActive(false);
     }
-
 
     void Update()
     {
@@ -45,15 +43,50 @@ public class PlayerWeapons : MonoBehaviour
     void Equip(GameObject equWeapon)
     {
         bool complete = false;
-        for (int i = 0; i < equipped.Length; i++)
+
+        // AOE = 0, Orbit = 1, Proj = 2
+        short weapType = equWeapon.GetComponent<WeaponCheck>().getType();
+
+        switch (weapType)
         {
-            if (equipped[i] == "def" && !complete)
-            {
-                equipped[i] = equWeapon.GetComponent<AOEWeapon>().weaponName;
-                complete = true;
-                AttachWeapon(equWeapon);
-            }
+            case 0:
+                for (int i = 0; i < equipped.Length; i++)
+                {
+                    if (equipped[i] == "def" && !complete)
+                    {
+                        equipped[i] = equWeapon.GetComponent<AOEWeapon>().weaponName;
+                        AttachWeapon(equWeapon);
+                        complete = true;
+                    }
+                }
+                break;
+            case 1:
+                for (int i = 0; i < equipped.Length; i++)
+                {
+                    if (equipped[i] == "def" && !complete)
+                    {
+                        equipped[i] = equWeapon.GetComponent<OrbitWeapon>().weaponName;
+                        AttachWeapon(equWeapon);
+                        complete = true;
+                    }
+                }
+                break;
+            case 2:
+                for (int i = 0; i < equipped.Length; i++)
+                {
+                    if (equipped[i] == "def" && !complete)
+                    {
+                        equipped[i] = equWeapon.GetComponent<ProjWeapon>().weaponName;
+                        AttachWeapon(equWeapon);
+                        complete = true;
+                    }
+                }
+                break;
+            default:
+                break;
         }
+
+        
         if (!complete) 
         {
             throw (new Exception("Tried to equip but no open slots"));
@@ -62,8 +95,31 @@ public class PlayerWeapons : MonoBehaviour
 
     void AttachWeapon(GameObject equWeapon)
     {
-        GameObject newWeapon = Instantiate(equWeapon, this.transform);
-        newWeapon.transform.transform.localPosition = new Vector3(0, -0.6f, 0);
+        GameObject newWeapon = Instantiate(equWeapon, transform);
+    }
+
+    public void RecieveSelection(short selected)
+    {
+        // Weapon List:
+        // 0: Circle, 1: Bow, 2: Whiteout, 3: Pencils
+
+        switch (selected)
+        {
+            case 0:
+                Equip(eraseCircle);
+                break;
+            case 1:
+                Equip(bow);
+                break;
+            case 2:
+                Equip(whiteout);
+                break;
+            case 3:
+                Equip(pencilStar);
+                break;
+            default:
+                break;
+        }
     }
 
     public void GainXP(int xp)

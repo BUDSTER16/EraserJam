@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
+
+
 
 public class GameManager : MonoBehaviour
 {
@@ -15,9 +18,13 @@ public class GameManager : MonoBehaviour
     public GameObject lilDemon;
 
     [Header("Buttons")]
-    [SerializeField] public GameObject firstButton;
-    [SerializeField] public GameObject secondButton;
-    [SerializeField] public GameObject thirdButton;
+    [SerializeField] public Image[] buttons = new Image[3];
+
+    [Header("Button Sprites")]
+    public Sprite circleBTN;
+    public Sprite bowBTN;
+    public Sprite whiteoutBTN;
+    public Sprite pencilsBTN;
 
 
     private GameObject selectedCharacter;
@@ -43,9 +50,9 @@ public class GameManager : MonoBehaviour
         player = Instantiate(selectedCharacter);
         Instantiate(cam, player.transform);
 
-        firstButton.SetActive(false);
-        secondButton.SetActive(false);
-        thirdButton.SetActive(false);
+        buttons[0].gameObject.SetActive(false);
+        buttons[1].gameObject.SetActive(false);
+        buttons[2].gameObject.SetActive(false);
     }
 
     void Update()
@@ -61,6 +68,7 @@ public class GameManager : MonoBehaviour
         {
             ShowButtons();
         }
+        
     }
 
     void SelectCharacter(short selection)
@@ -141,9 +149,56 @@ public class GameManager : MonoBehaviour
     {
         // Weapon List:
         // 0: Circle, 1: Bow, 2: Whiteout, 3: Pencils
+
+
+        int choice;
         
-        firstButton.SetActive(true);
-        secondButton.SetActive(true);
-        thirdButton.SetActive(true);
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            choice = Random.Range(0, 4);
+
+            switch (choice)
+            {
+                case 0:
+                    buttons[i].sprite = circleBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Eraser\nCircle";
+                    break;
+                case 1:
+                    buttons[i].sprite = bowBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Bow";
+                    break;
+                case 2:
+                    buttons[i].sprite = whiteoutBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "White\nOut";
+                    break;
+                case 3:
+                    buttons[i].sprite = pencilsBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Pencil\nStar";
+                    break;
+                default:
+                    break;
+            }
+            buttons[i].GetComponent<ButtonBehaviour>().SetWeaponHeld((short)choice);
+        }
+
+        
+
+
+        buttons[0].gameObject.SetActive(true);
+        buttons[1].gameObject.SetActive(true);
+        buttons[2].gameObject.SetActive(true);
+    }
+
+    public void HideButtons()
+    {
+        buttons[0].gameObject.SetActive(false);
+        buttons[1].gameObject.SetActive(false);
+        buttons[2].gameObject.SetActive(false);
+    }
+
+    public void TakeButtonInfo(short id, short weap)
+    {
+        player.GetComponent<PlayerWeapons>().RecieveSelection(weap);
+        HideButtons();
     }
 }

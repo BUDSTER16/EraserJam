@@ -56,6 +56,13 @@ public class Enemy : MonoBehaviour
                 case 0:
                     health -= (weapon.GetComponent<AOEWeapon>().damage/5) * Time.deltaTime;
                     break;
+                case 1:
+                    health -= (weapon.GetComponent<OrbitWeapon>().damage / 2) * Time.deltaTime;
+                    break;
+                case 2:
+                    health -= (weapon.GetComponent<ProjWeapon>().damage) * Time.deltaTime;
+                    Destroy(weapon);
+                    break;
                 default:
                     break;
             }

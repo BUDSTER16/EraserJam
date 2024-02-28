@@ -160,7 +160,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &7092129975168593250
 MonoBehaviour:
@@ -194,7 +194,9 @@ MonoBehaviour:
   healMultiplier: 1
   xpToLevel: 50
   eraseCircle: {fileID: 9043783973476608158, guid: 19097a9a3d776d94db04cd8e2bfdee1c, type: 3}
-  HP: 0
+  bow: {fileID: 1138010411933405548, guid: bac987ca7bd24d444aa2ca7de357c432, type: 3}
+  whiteout: {fileID: 8599124444942786719, guid: f277f5873831a114ba3d3ebd9d642ce3, type: 3}
+  pencilStar: {fileID: 8498707574672006639, guid: 57d405b77ab686d47a4a7a313b91ebfb, type: 3}
 --- !u!95 &3648165606646923358
 Animator:
   serializedVersion: 5
