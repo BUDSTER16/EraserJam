@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Playable Characters")]
     public GameObject mrAverage;
+    public GameObject rangedMaster;
+    public GameObject tank;
 
     [Header("Enemies")]
     public GameObject lilDemon;
@@ -77,6 +79,12 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 selectedCharacter = mrAverage;
+                break;
+            case 1:
+                selectedCharacter = rangedMaster;
+                break;
+            case 2:
+                selectedCharacter = tank;
                 break;
             default:
                 selectedCharacter = mrAverage;

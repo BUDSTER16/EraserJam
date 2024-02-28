@@ -79,4 +79,9 @@ public class ProjWeapon : MonoBehaviour
         }
         transform.SetParent(null, true);
     }
+
+    public bool IsFired()
+    {
+        return fired;
+    }
 }

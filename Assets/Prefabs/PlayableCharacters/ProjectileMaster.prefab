@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 20
-  atkDelay: 0.8
+  atkDelay: 1
   dmgMultiplier: 1
   curseDamage: 0.2
   healMultiplier: 1

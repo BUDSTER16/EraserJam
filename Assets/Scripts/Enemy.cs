@@ -46,26 +46,12 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Weapon")
+        if(collision.tag == "Weapon" && collision.GetComponent<WeaponCheck>().getType() == 0)
         {
-            short weapType = collision.GetComponent<WeaponCheck>().getType();
             GameObject weapon;
             weapon = collision.gameObject;
-            switch (weapType)
-            {
-                case 0:
-                    health -= (weapon.GetComponent<AOEWeapon>().damage/5) * Time.deltaTime;
-                    break;
-                case 1:
-                    health -= (weapon.GetComponent<OrbitWeapon>().damage / 2) * Time.deltaTime;
-                    break;
-                case 2:
-                    health -= (weapon.GetComponent<ProjWeapon>().damage);
-                    Destroy(weapon);
-                    break;
-                default:
-                    break;
-            }
+
+                    health -= (weapon.GetComponent<AOEWeapon>().damage) * Time.deltaTime;
         }
         if(collision.tag == "Player")
         {
@@ -74,6 +60,28 @@ public class Enemy : MonoBehaviour
             player.GetComponent<PlayerWeapons>().TakeDamage(damage*Time.deltaTime);
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Weapon" && collision.GetComponent<WeaponCheck>().getType() == 1)
+        {
+            GameObject weapon;
+            weapon = collision.gameObject;
+
+            health -= (weapon.GetComponent<OrbitWeapon>().damage) * Time.deltaTime;
+        }
+
+        if (collision.tag == "Weapon" && collision.GetComponent<WeaponCheck>().getType() == 2)
+        {
+            GameObject weapon;
+            weapon = collision.gameObject;
+            if (!weapon.GetComponent<ProjWeapon>().IsFired())
+            {
+                health -= (weapon.GetComponent<ProjWeapon>().damage / 5) * Time.deltaTime;
+                Destroy(weapon);
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

@@ -116,7 +116,7 @@ MonoBehaviour:
   damage: 5
   regen: 0
   isCursed: 1
-  FireRate: 1
+  FireRate: 4
   speed: 3
 --- !u!61 &-7318992819470945414
 BoxCollider2D:
