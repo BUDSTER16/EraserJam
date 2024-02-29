@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,8 +39,10 @@ public class GameManager : MonoBehaviour
     private int lilDemonReq = 5;
     private int biggerdemonOG = 1;
     private int biggerDemonReq = 1;
+    private int bossReq = 0;
     private int totalEnemyReq = 0;
 
+    private int bossNum = 0;
     private int lilDemonNum = 0;
     private int biggerDemonNum = 0;
     private int totalEnemyNum = 0;
@@ -60,8 +61,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        totalEnemyReq = lilDemonReq + biggerDemonReq;
-        totalEnemyNum = lilDemonNum + biggerDemonNum;
+        totalEnemyReq = lilDemonReq + biggerDemonReq + bossReq;
+        totalEnemyNum = lilDemonNum + biggerDemonNum + bossNum;
 
         if (totalEnemyNum < totalEnemyReq)
         {
@@ -73,6 +74,12 @@ public class GameManager : MonoBehaviour
 
         lilDemonReq = lildemonOG + ((int)GameTime / 15);
         biggerDemonReq = biggerdemonOG + ((int)GameTime / 100);
+
+        if(GameTime >= 250)
+        {
+            bossReq = 1;
+        }
+
     }
 
     void SelectCharacter(short selection)
@@ -160,6 +167,10 @@ public class GameManager : MonoBehaviour
                 biggerDemonNum -= 1;
                 biggerDemonKills += 1;
                 player.GetComponent<PlayerWeapons>().GainXP(3);
+                break;
+            case 2:
+                bossNum -= 1;
+                SceneManager.LoadScene("Win");
                 break;
             default:
                 break;
