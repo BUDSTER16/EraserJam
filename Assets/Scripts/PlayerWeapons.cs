@@ -12,7 +12,7 @@ public class PlayerWeapons : MonoBehaviour
     public float dmgMultiplier = 1.0f;
     public float curseDamage = 0.2f;
     public float healMultiplier = 1.0f;
-    public int xpToLevel = 50;
+    private int totalXP = 0;
 
     [Header("Weapons")]
     public GameObject eraseCircle;
@@ -27,6 +27,7 @@ public class PlayerWeapons : MonoBehaviour
     private float HP;
 
     private string[] equipped = { "def", "def", "def", "def" };
+    private short numWeapons = 0;
 
     void Start()
     {
@@ -37,56 +38,65 @@ public class PlayerWeapons : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     void Equip(GameObject equWeapon)
     {
         bool complete = false;
-
+        bool alreadyOwned = false;
         // AOE = 0, Orbit = 1, Proj = 2
         short weapType = equWeapon.GetComponent<WeaponCheck>().getType();
-
+        string wname = "";
         switch (weapType)
         {
             case 0:
-                for (int i = 0; i < equipped.Length; i++)
-                {
-                    if (equipped[i] == "def" && !complete)
-                    {
-                        equipped[i] = equWeapon.GetComponent<AOEWeapon>().weaponName;
-                        AttachWeapon(equWeapon);
-                        complete = true;
-                    }
-                }
+                wname = equWeapon.GetComponent<AOEWeapon>().weaponName;
                 break;
             case 1:
-                for (int i = 0; i < equipped.Length; i++)
-                {
-                    if (equipped[i] == "def" && !complete)
-                    {
-                        equipped[i] = equWeapon.GetComponent<OrbitWeapon>().weaponName;
-                        AttachWeapon(equWeapon);
-                        complete = true;
-                    }
-                }
+                wname = equWeapon.GetComponent<OrbitWeapon>().weaponName;
                 break;
             case 2:
-                for (int i = 0; i < equipped.Length; i++)
-                {
-                    if (equipped[i] == "def" && !complete)
-                    {
-                        equipped[i] = equWeapon.GetComponent<ProjWeapon>().weaponName;
-                        AttachWeapon(equWeapon);
-                        complete = true;
-                    }
-                }
+                wname = equWeapon.GetComponent<ProjWeapon>().weaponName;
                 break;
             default:
                 break;
         }
 
-        
+        for (int i = 0; i < equipped.Length; i++)
+        {
+            if (equipped[i] == wname)
+            {
+                alreadyOwned = true;
+            }
+        }
+
+
+        if (numWeapons < 4 && !alreadyOwned)
+        {
+            AttachWeapon(equWeapon);
+            numWeapons += 1;
+            complete = true;
+        }
+        else if (alreadyOwned)
+        {
+            switch (weapType)
+            {
+                case 0:
+                    equWeapon.GetComponent<AOEWeapon>().Upgrade();
+                    break;
+                case 1:
+                    equWeapon.GetComponent<OrbitWeapon>().Upgrade();
+                    break;
+                case 2:
+                    equWeapon.GetComponent<ProjWeapon>().Upgrade();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+       
         if (!complete) 
         {
             throw (new Exception("Tried to equip but no open slots"));
@@ -125,6 +135,17 @@ public class PlayerWeapons : MonoBehaviour
     public void GainXP(int xp)
     {
         experience += xp;
+        totalXP += xp;
+    }
+
+    public int GetXP()
+    {
+        return experience;
+    }
+
+    public void LevelUp()
+    {
+        experience -= 20;
     }
 
     public void TakeDamage(float dmg)
@@ -141,6 +162,7 @@ public class PlayerWeapons : MonoBehaviour
     {
         Debug.Log("YOU DIED");
         deathScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

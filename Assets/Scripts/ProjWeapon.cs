@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,6 +23,8 @@ public class ProjWeapon : MonoBehaviour
     private bool fired = false;
     public float speed;
 
+    BoxCollider2D collide;
+
     void Start()
     {
         player = this.gameObject.transform.parent.gameObject;
@@ -31,6 +34,10 @@ public class ProjWeapon : MonoBehaviour
         FireRate *= player.GetComponent<PlayerWeapons>().atkDelay;
         //FireRate *= 10;
         fireTimer = FireRate;
+
+        collide = GetComponent<BoxCollider2D>();
+
+        collide.enabled = false;
     }
 
     // Update is called once per frame
@@ -69,6 +76,7 @@ public class ProjWeapon : MonoBehaviour
     void Fire()
     {
         Instantiate(this, player.transform);
+        collide.enabled = true;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         int Target = Random.Range(0, enemies.Length);
@@ -83,5 +91,26 @@ public class ProjWeapon : MonoBehaviour
     public bool IsFired()
     {
         return fired;
+    }
+
+    public void Upgrade()
+    {
+        short stat = (short)Random.Range(0, 2);
+
+        switch (stat)
+        {
+            case 0:
+                damage += 0.5f;
+                break;
+            case 1:
+                FireRate -= 0.01f;
+                if (FireRate <1)
+                {
+                    FireRate = 1;
+                }
+                break;
+            default:
+                break;
+        }
     }
 }

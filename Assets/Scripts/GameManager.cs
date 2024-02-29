@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Enemies")]
     public GameObject lilDemon;
+    public GameObject biggerDemon;
 
     [Header("Buttons")]
     [SerializeField] public Image[] buttons = new Image[3];
@@ -32,42 +32,54 @@ public class GameManager : MonoBehaviour
     private GameObject selectedCharacter;
     private GameObject player;
 
-    Vector3 spawnPos= Vector3.zero;
+    private float GameTime = 0;
 
+    Vector3 spawnPos= Vector3.zero;
+    private int lildemonOG = 5;
     private int lilDemonReq = 5;
+    private int biggerdemonOG = 1;
+    private int biggerDemonReq = 1;
+    private int bossReq = 0;
     private int totalEnemyReq = 0;
 
+    private int bossNum = 0;
     private int lilDemonNum = 0;
+    private int biggerDemonNum = 0;
     private int totalEnemyNum = 0;
 
 
     private int lilDemonKills = 0;
+    private int biggerDemonKills = 0;
 
-    void Start()
+    void Awake()
     {
         SelectCharacter(Smuggle());
         player = Instantiate(selectedCharacter);
         Instantiate(cam, player.transform);
-
-        buttons[0].gameObject.SetActive(false);
-        buttons[1].gameObject.SetActive(false);
-        buttons[2].gameObject.SetActive(false);
+        ShowButtons();
     }
 
     void Update()
     {
-        totalEnemyReq = lilDemonReq;
+        totalEnemyReq = lilDemonReq + biggerDemonReq + bossReq;
+        totalEnemyNum = lilDemonNum + biggerDemonNum + bossNum;
 
         if (totalEnemyNum < totalEnemyReq)
         {
             SpawnEnemy();
         }
+        CheckPlayerXP();
 
-        if (Input.GetKeyDown(KeyCode.V))
+        GameTime += Time.deltaTime;
+
+        lilDemonReq = lildemonOG + ((int)GameTime / 15);
+        biggerDemonReq = biggerdemonOG + ((int)GameTime / 100);
+
+        if(GameTime >= 250)
         {
-            ShowButtons();
+            bossReq = 1;
         }
-        
+
     }
 
     void SelectCharacter(short selection)
@@ -134,6 +146,12 @@ public class GameManager : MonoBehaviour
             Instantiate(lilDemon, spawnPos, Quaternion.identity);
             lilDemonNum += 1;
         }
+        else if (biggerDemonNum < biggerDemonReq)
+        {
+            Instantiate(biggerDemon, spawnPos, Quaternion.identity);
+            biggerDemonNum += 1;
+        }
+        totalEnemyNum = lilDemonNum + biggerDemonNum;
     }
 
     public void EnemyKilled(short enemyType)
@@ -144,6 +162,15 @@ public class GameManager : MonoBehaviour
                 lilDemonNum -= 1;
                 lilDemonKills += 1;
                 player.GetComponent<PlayerWeapons>().GainXP(1);
+                break;
+            case 1:
+                biggerDemonNum -= 1;
+                biggerDemonKills += 1;
+                player.GetComponent<PlayerWeapons>().GainXP(3);
+                break;
+            case 2:
+                bossNum -= 1;
+                SceneManager.LoadScene("Win");
                 break;
             default:
                 break;
@@ -192,6 +219,7 @@ public class GameManager : MonoBehaviour
         buttons[0].gameObject.SetActive(true);
         buttons[1].gameObject.SetActive(true);
         buttons[2].gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void HideButtons()
@@ -199,6 +227,7 @@ public class GameManager : MonoBehaviour
         buttons[0].gameObject.SetActive(false);
         buttons[1].gameObject.SetActive(false);
         buttons[2].gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     public void TakeButtonInfo(short id, short weap)
@@ -213,5 +242,16 @@ public class GameManager : MonoBehaviour
         short pick = (short)Capsule.GetComponent<CharSelectData>().getCharacter();
         Destroy(Capsule);
         return pick;
+    }
+
+    void CheckPlayerXP()
+    {
+        int exp = player.GetComponent<PlayerWeapons>().GetXP();
+        Debug.Log(exp);
+        if (exp >= 20) 
+        {
+            ShowButtons();
+            player.GetComponent<PlayerWeapons>().LevelUp();
+        }
     }
 }
