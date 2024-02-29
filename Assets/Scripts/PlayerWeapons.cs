@@ -38,7 +38,7 @@ public class PlayerWeapons : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     void Equip(GameObject equWeapon)
@@ -135,16 +135,17 @@ public class PlayerWeapons : MonoBehaviour
     public void GainXP(int xp)
     {
         experience += xp;
-        if (experience >= 50)
-        {
-            experience -= 50;
-            LevelUp();
-        }
+        totalXP += xp;
+    }
+
+    public int GetXP()
+    {
+        return experience;
     }
 
     public void LevelUp()
     {
-
+        experience -= 20;
     }
 
     public void TakeDamage(float dmg)
@@ -161,6 +162,7 @@ public class PlayerWeapons : MonoBehaviour
     {
         Debug.Log("YOU DIED");
         deathScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -1482,6 +1482,7 @@ MonoBehaviour:
   rangedMaster: {fileID: 1094410085130404002, guid: bec0a50ef00cd7e45bedce2264213108, type: 3}
   tank: {fileID: 1094410085130404002, guid: a63d082ab16ad6d49857c13fbad7ad08, type: 3}
   lilDemon: {fileID: 4045267242486857348, guid: c6f51bb368665ef40b739b0ef1818f49, type: 3}
+  biggerDemon: {fileID: 4045267242486857348, guid: 682a8ef59ee78334b9f25281ddb581ac, type: 3}
   buttons:
   - {fileID: 495944720}
   - {fileID: 221290068}

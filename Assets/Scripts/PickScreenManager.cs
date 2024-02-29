@@ -41,6 +41,7 @@ public class PickScreenManager : MonoBehaviour
 
     void PickDemon()
     {
-        Debug.Log("NOT YET");
+        Capsule.GetComponent<CharSelectData>().setCharacter(0);
+        SceneManager.LoadScene("Tutorial");
     }
 }

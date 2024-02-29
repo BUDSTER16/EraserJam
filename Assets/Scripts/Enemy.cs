@@ -53,13 +53,18 @@ public class Enemy : MonoBehaviour
 
                     health -= (weapon.GetComponent<AOEWeapon>().damage) * Time.deltaTime;
         }
-        if(collision.tag == "Player")
+        
+        
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
             animator.ResetTrigger("Walk");
             animator.SetTrigger("Bite");
-            player.GetComponent<PlayerWeapons>().TakeDamage(damage*Time.deltaTime);
+            player.GetComponent<PlayerWeapons>().TakeDamage(damage * Time.deltaTime);
         }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,11 +81,9 @@ public class Enemy : MonoBehaviour
         {
             GameObject weapon;
             weapon = collision.gameObject;
-            if (!weapon.GetComponent<ProjWeapon>().IsFired())
-            {
-                health -= (weapon.GetComponent<ProjWeapon>().damage / 5) * Time.deltaTime;
-                Destroy(weapon);
-            }
+            
+            health -= (weapon.GetComponent<ProjWeapon>().damage * Time.deltaTime);
+            Destroy(weapon);
         }
     }
 
