@@ -192,11 +192,13 @@ MonoBehaviour:
   dmgMultiplier: 1
   curseDamage: 0.2
   healMultiplier: 1
-  xpToLevel: 50
   eraseCircle: {fileID: 9043783973476608158, guid: 19097a9a3d776d94db04cd8e2bfdee1c, type: 3}
   bow: {fileID: 1138010411933405548, guid: bac987ca7bd24d444aa2ca7de357c432, type: 3}
   whiteout: {fileID: 8599124444942786719, guid: f277f5873831a114ba3d3ebd9d642ce3, type: 3}
   pencilStar: {fileID: 8498707574672006639, guid: 57d405b77ab686d47a4a7a313b91ebfb, type: 3}
+  chain: {fileID: 3702116778913436838, guid: 43ea9e59aacc876438460f39eb3f25ab, type: 3}
+  healAura: {fileID: 5805534528669393465, guid: 81482048a90cb44439577e4f6cca2f93, type: 3}
+  Orberaser: {fileID: 2680377045580840485, guid: 18d8768108c2a7e4bb374ded8ece8dff, type: 3}
 --- !u!114 &-1471528027384608289
 MonoBehaviour:
   m_ObjectHideFlags: 0

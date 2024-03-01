@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: -4439656423639455562}
   - component: {fileID: -9012028694692450114}
   - component: {fileID: -6626060559421113404}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Orberacer
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2680377045580840485}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6729629, y: -2.0689418, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: 
-  damage: 6
+  damage: 3
   regen: 0
   isCursed: 0
   turnSpeed: 120

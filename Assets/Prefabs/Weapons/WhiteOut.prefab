@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Whiteout
-  damage: 5
+  damage: 15
   regen: 0
   isCursed: 1
   FireRate: 2

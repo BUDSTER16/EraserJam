@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Eraser Circle
-  damage: 10
+  damage: 4
   regen: 0
   isCursed: 0
 --- !u!114 &-7147166892845416375

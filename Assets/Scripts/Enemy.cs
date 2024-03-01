@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
             GameObject weapon;
             weapon = collision.gameObject;
 
-                    health -= (weapon.GetComponent<AOEWeapon>().damage) * Time.deltaTime;
+            health -= (weapon.GetComponent<AOEWeapon>().damage) * Time.deltaTime;
         }
         
         
@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
             GameObject weapon;
             weapon = collision.gameObject;
 
-            health -= (weapon.GetComponent<OrbitWeapon>().damage) * Time.deltaTime;
+            health -= (weapon.GetComponent<OrbitWeapon>().damage);
         }
 
         if (collision.tag == "Weapon" && collision.GetComponent<WeaponCheck>().getType() == 2)
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
             GameObject weapon;
             weapon = collision.gameObject;
             
-            health -= (weapon.GetComponent<ProjWeapon>().damage * Time.deltaTime);
+            health -= (weapon.GetComponent<ProjWeapon>().damage);
             Destroy(weapon);
         }
     }

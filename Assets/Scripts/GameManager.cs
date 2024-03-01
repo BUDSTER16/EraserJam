@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     public Sprite bowBTN;
     public Sprite whiteoutBTN;
     public Sprite pencilsBTN;
+    public Sprite chainBTN;
+    public Sprite orberacerBTN;
+    public Sprite healauraBTN;
 
 
     private GameObject selectedCharacter;
@@ -74,6 +77,8 @@ public class GameManager : MonoBehaviour
 
         lilDemonReq = lildemonOG + ((int)GameTime / 15);
         biggerDemonReq = biggerdemonOG + ((int)GameTime / 100);
+
+        Debug.Log("lildemons: " + lilDemonReq);
 
         if(GameTime >= 250)
         {
@@ -187,7 +192,7 @@ public class GameManager : MonoBehaviour
         
         for (int i = 0; i < buttons.Length; i++)
         {
-            choice = Random.Range(0, 4);
+            choice = Random.Range(0, 7);
 
             switch (choice)
             {
@@ -206,6 +211,18 @@ public class GameManager : MonoBehaviour
                 case 3:
                     buttons[i].sprite = pencilsBTN;
                     buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Pencil\nStar";
+                    break;
+                case 4:
+                    buttons[i].sprite = chainBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Chain\nEraser";
+                    break;
+                case 5:
+                    buttons[i].sprite = healauraBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Heal\nAura";
+                    break;
+                case 6:
+                    buttons[i].sprite = orberacerBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Orberaser";
                     break;
                 default:
                     break;

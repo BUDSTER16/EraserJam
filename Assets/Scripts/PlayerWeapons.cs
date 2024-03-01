@@ -19,6 +19,9 @@ public class PlayerWeapons : MonoBehaviour
     public GameObject bow;
     public GameObject whiteout;
     public GameObject pencilStar;
+    public GameObject chain;
+    public GameObject healAura;
+    public GameObject Orberaser;
 
     [Header("UI Utilities")]
     private GameObject deathScreen;
@@ -111,7 +114,7 @@ public class PlayerWeapons : MonoBehaviour
     public void RecieveSelection(short selected)
     {
         // Weapon List:
-        // 0: Circle, 1: Bow, 2: Whiteout, 3: Pencils
+        // 0: Circle, 1: Bow, 2: Whiteout, 3: Pencils, 4: Chain, 5: Heal Aura, 6:Orberaser
 
         switch (selected)
         {
@@ -126,6 +129,15 @@ public class PlayerWeapons : MonoBehaviour
                 break;
             case 3:
                 Equip(pencilStar);
+                break;
+            case 4:
+                Equip(chain);
+                break;
+            case 5:
+                Equip(healAura);
+                break;
+            case 6:
+                Equip(Orberaser);
                 break;
             default:
                 break;

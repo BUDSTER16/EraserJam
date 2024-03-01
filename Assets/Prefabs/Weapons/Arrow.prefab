@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Bow
-  damage: 1
+  damage: 10
   regen: 0
   isCursed: 0
   FireRate: 1.25

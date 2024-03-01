@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4025733689578577852}
   - component: {fileID: 5215034053142407998}
   - component: {fileID: 7872380578685261571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BiggerDemon
   m_TagString: Enemy
   m_Icon: {fileID: 0}

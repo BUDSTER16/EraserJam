@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6977191416972861732}
   - component: {fileID: -1539008656231648786}
   - component: {fileID: 5921706747392603529}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HealAura
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5805534528669393465}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.954752, y: -2.1883833, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: HealAura
   damage: 2
-  regen: 1
+  regen: 0.5
   isCursed: 0
 --- !u!114 &-1539008656231648786
 MonoBehaviour:

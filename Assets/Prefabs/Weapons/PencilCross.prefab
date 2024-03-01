@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Pencil Cross
-  damage: 3
+  damage: 4
   regen: 0
   isCursed: 0
   turnSpeed: 55

@@ -1491,6 +1491,9 @@ MonoBehaviour:
   bowBTN: {fileID: 21300000, guid: bd230ec6d713c6b45977dd4bc3b90754, type: 3}
   whiteoutBTN: {fileID: 21300000, guid: 87304a8ad402939458501e33c9e0361b, type: 3}
   pencilsBTN: {fileID: 21300000, guid: aa7a5fe4711fd774382d62225480681f, type: 3}
+  chainBTN: {fileID: 21300000, guid: 073441d75706c494d9381a4a98b1a755, type: 3}
+  orberacerBTN: {fileID: 21300000, guid: 6769e252458f2b14b97ecc45fa1e5676, type: 3}
+  healauraBTN: {fileID: 21300000, guid: 132dc848be1947543bc459ded5df3838, type: 3}
 --- !u!1 &749554017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,7 +2075,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1575288638}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PITS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
