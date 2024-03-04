@@ -39,8 +39,8 @@ public class AOEWeapon : MonoBehaviour
                 damage += 0.5f;
                 break;
             case 1:
-                size.x += 0.5f;
-                size.y += 0.5f;
+                size.x += 5f;
+                size.y += 5f;
                 AdjustTransform();
                 break;
             default:

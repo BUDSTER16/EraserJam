@@ -30,6 +30,7 @@ public class PlayerWeapons : MonoBehaviour
     private float HP;
 
     private string[] equipped = { "def", "def", "def", "def" };
+    private int[] eqIDs = new int[4];
     private short numWeapons = 0;
 
     void Start()
@@ -44,7 +45,7 @@ public class PlayerWeapons : MonoBehaviour
 
     }
 
-    void Equip(GameObject equWeapon)
+    void Equip(GameObject equWeapon, int id)
     {
         bool complete = false;
         bool alreadyOwned = false;
@@ -71,6 +72,14 @@ public class PlayerWeapons : MonoBehaviour
             if (equipped[i] == wname)
             {
                 alreadyOwned = true;
+                complete = true;
+            }
+
+            if (equipped[i] == "def" && !complete)
+            {
+                equipped[i] = wname;
+                eqIDs[i] = id;
+                complete = true;
             }
         }
 
@@ -79,7 +88,6 @@ public class PlayerWeapons : MonoBehaviour
         {
             AttachWeapon(equWeapon);
             numWeapons += 1;
-            complete = true;
         }
         else if (alreadyOwned)
         {
@@ -102,7 +110,7 @@ public class PlayerWeapons : MonoBehaviour
        
         if (!complete) 
         {
-            throw (new Exception("Tried to equip but no open slots"));
+            throw new Exception("Tried to equip but no open slots");
         }
     }
 
@@ -119,25 +127,25 @@ public class PlayerWeapons : MonoBehaviour
         switch (selected)
         {
             case 0:
-                Equip(eraseCircle);
+                Equip(eraseCircle, selected);
                 break;
             case 1:
-                Equip(bow);
+                Equip(bow, selected);
                 break;
             case 2:
-                Equip(whiteout);
+                Equip(whiteout, selected);
                 break;
             case 3:
-                Equip(pencilStar);
+                Equip(pencilStar, selected);
                 break;
             case 4:
-                Equip(chain);
+                Equip(chain, selected);
                 break;
             case 5:
-                Equip(healAura);
+                Equip(healAura, selected);
                 break;
             case 6:
-                Equip(Orberaser);
+                Equip(Orberaser, selected);
                 break;
             default:
                 break;
@@ -183,5 +191,15 @@ public class PlayerWeapons : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public int GetWeaponCount()
+    {
+        return numWeapons;
+    }
+
+    public int[] GetEquippedIDs()
+    {
+        return eqIDs;
     }
 }

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [Header("Enemies")]
     public GameObject lilDemon;
     public GameObject biggerDemon;
+    public GameObject boss;
 
     [Header("Buttons")]
     [SerializeField] public Image[] buttons = new Image[3];
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     private int lilDemonReq = 5;
     private int biggerdemonOG = 1;
     private int biggerDemonReq = 1;
+    private int bossOG = 0;
     private int bossReq = 0;
     private int totalEnemyReq = 0;
 
@@ -77,13 +79,7 @@ public class GameManager : MonoBehaviour
 
         lilDemonReq = lildemonOG + ((int)GameTime / 15);
         biggerDemonReq = biggerdemonOG + ((int)GameTime / 100);
-
-        Debug.Log("lildemons: " + lilDemonReq);
-
-        if(GameTime >= 250)
-        {
-            bossReq = 1;
-        }
+        bossReq = bossOG + ((int)GameTime / 15);
 
     }
 
@@ -156,7 +152,12 @@ public class GameManager : MonoBehaviour
             Instantiate(biggerDemon, spawnPos, Quaternion.identity);
             biggerDemonNum += 1;
         }
-        totalEnemyNum = lilDemonNum + biggerDemonNum;
+        else if (bossReq < bossNum)
+        {
+            Instantiate(boss, spawnPos, Quaternion.identity);
+            bossNum += 1;
+        }
+        totalEnemyNum = lilDemonNum + biggerDemonNum + bossNum;
     }
 
     public void EnemyKilled(short enemyType)
@@ -239,6 +240,63 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void ShowButtons(int[] used)
+    {
+        // Weapon List:
+        // 0: Circle, 1: Bow, 2: Whiteout, 3: Pencils
+
+
+        int choice;
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            choice = used[Random.Range(0, 4)];
+
+            switch (choice)
+            {
+                case 0:
+                    buttons[i].sprite = circleBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Eraser\nCircle";
+                    break;
+                case 1:
+                    buttons[i].sprite = bowBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Bow";
+                    break;
+                case 2:
+                    buttons[i].sprite = whiteoutBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "White\nOut";
+                    break;
+                case 3:
+                    buttons[i].sprite = pencilsBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Pencil\nStar";
+                    break;
+                case 4:
+                    buttons[i].sprite = chainBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Chain\nEraser";
+                    break;
+                case 5:
+                    buttons[i].sprite = healauraBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Heal\nAura";
+                    break;
+                case 6:
+                    buttons[i].sprite = orberacerBTN;
+                    buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Orberaser";
+                    break;
+                default:
+                    break;
+            }
+            buttons[i].GetComponent<ButtonBehaviour>().SetWeaponHeld((short)choice);
+        }
+
+
+
+
+        buttons[0].gameObject.SetActive(true);
+        buttons[1].gameObject.SetActive(true);
+        buttons[2].gameObject.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
     public void HideButtons()
     {
         buttons[0].gameObject.SetActive(false);
@@ -264,10 +322,15 @@ public class GameManager : MonoBehaviour
     void CheckPlayerXP()
     {
         int exp = player.GetComponent<PlayerWeapons>().GetXP();
-        Debug.Log(exp);
-        if (exp >= 20) 
+        int wNum = player.GetComponent<PlayerWeapons>().GetWeaponCount();
+        if (exp >= 20 && wNum != 4) 
         {
             ShowButtons();
+            player.GetComponent<PlayerWeapons>().LevelUp();
+        }
+        else if (exp >= 20)
+        {
+            ShowButtons(player.GetComponent<PlayerWeapons>().GetEquippedIDs());
             player.GetComponent<PlayerWeapons>().LevelUp();
         }
     }
