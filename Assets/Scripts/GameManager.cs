@@ -334,4 +334,9 @@ public class GameManager : MonoBehaviour
             player.GetComponent<PlayerWeapons>().LevelUp();
         }
     }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
